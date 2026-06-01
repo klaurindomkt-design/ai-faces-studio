@@ -1,0 +1,6 @@
+{
+  "name": "AI Faces Studio",
+  "description": "Portfolio premium de influenciadoras digitais de alta fidelidade criadas com Inteligência Artificial.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

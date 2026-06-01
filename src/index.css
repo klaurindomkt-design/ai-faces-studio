@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Josefin+Sans:wght@100;300;400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Cormorant Garamond", serif;
+  --font-sans: "Josefin Sans", sans-serif;
+  
+  --color-gold: #c9a96e;
+  --color-gold-light: #e8d5a3;
+  --color-gold-dim: #8a6e3e;
+  --color-black-pure: #080808;
+  --color-dark-matte: #111010;
+  --color-surface-bg: #181614;
+  --color-surface-card: #221f1b;
+  --color-txt-light: #e8e2d9;
+  --color-txt-muted: #8a8278;
+  --color-white-pure: #f5f0e8;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    background-color: var(--color-black-pure);
+    color: var(--color-txt-light);
+    font-family: var(--font-sans);
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    overflow-x: hidden;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #080808;
+}
+::-webkit-scrollbar-thumb {
+  background: #c9a96e;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #e8d5a3;
+}
