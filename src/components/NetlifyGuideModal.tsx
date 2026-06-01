@@ -35,8 +35,13 @@ export default function NetlifyGuideModal({ isOpen, onClose }: NetlifyGuideModal
         {/* Content body */}
         <div className="p-6 space-y-6 max-h-[70vh] overflow-y-auto scrollbar-thin">
           {/* Welcome Alert */}
-          <div className="p-4 bg-gold/5 border border-gold/20 text-txt-light text-xs leading-relaxed rounded-[1px]">
-            <strong className="text-gold">Tudo Pronto para o Sucesso!</strong> Seus ajustes de biografias e substituições de imagens estão salvos no navegador. Agora, vamos publicar esse visual espetacular no Netlify para compartilhar com seus clientes e audiência.
+          <div className="p-4 bg-gold/5 border border-gold/20 text-txt-light text-xs leading-relaxed rounded-[1px] space-y-2">
+            <p>
+              <strong className="text-gold">Tudo Pronto para o Sucesso!</strong> Seus ajustes de biografias e substituições de imagens estão salvos no navegador.
+            </p>
+            <p className="text-txt-muted text-[11px]">
+              ⚠️ <strong className="text-white-pure">IMPORTANTE:</strong> Para que suas novas imagens e biografias fiquem salvas de forma permanente no site final do Netlify, certifique-se de clicar no botão <strong className="text-gold">"Salvar Alterações no Código-Fonte"</strong> na faixa amarela de customização antes de exportar o ZIP ou sincronizar com o GitHub.
+            </p>
           </div>
 
           {/* Quick Steps Timeline */}

@@ -23,6 +23,7 @@ export default function App() {
   const [isNetlifyGuideOpen, setIsNetlifyGuideOpen] = useState<boolean>(false);
   const [editingModel, setEditingModel] = useState<Model | null>(null);
   const [replacingImage, setReplacingImage] = useState<ImageCard | null>(null);
+  const [isSavingSource, setIsSavingSource] = useState<boolean>(false);
 
   // Load models from localStorage or default (safe with try/catch for sandbox iframes)
   const [models, setModels] = useState<Model[]>(() => {
@@ -45,6 +46,30 @@ export default function App() {
     } catch (e) {
       console.error('Erro ao gravar no LocalStorage:', e);
       // Fail silently to keep application functioning flawlessly in active browser memory
+    }
+  };
+
+  const handlePersistToSourceCode = async () => {
+    setIsSavingSource(true);
+    try {
+      const response = await fetch('/api/save-portfolio', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ models }),
+      });
+      const data = await response.json();
+      if (data.success) {
+        alert('✨ SUCESSO! Suas novas fotos e textos de influenciadoras personalizadas foram gravados e consolidados diretamente no CÓDIGO-FONTE do projeto na nuvem.\n\nAgora o seu site final no Netlify carregará tudo perfeitamente! Para ver no ar, basta clicar em "Sync to GitHub" (ou no botão do GitHub no menu lateral de publicação) para enviar seu novo código-fonte automaticamente ao seu repositório Netlify!');
+      } else {
+        alert('Erro ao gravar no código-fonte do servidor: ' + data.message);
+      }
+    } catch (error: any) {
+      console.error('Save error:', error);
+      alert('Erro de conexão ao servidor: certifique-se de que o servidor está rodando ou reconecte.');
+    } finally {
+      setIsSavingSource(false);
     }
   };
 
@@ -184,14 +209,25 @@ export default function App() {
 
       {isEditMode && (
         <div className="max-w-7xl mx-auto px-6 md:px-16 pt-10">
-          <div className="bg-gold/5 border border-dashed border-gold/30 p-4 text-center rounded-[2px] animate-pulse">
-            <p className="text-xs text-gold tracking-wide uppercase font-medium flex items-center justify-center gap-2">
+          <div className="bg-gold/5 border border-dashed border-gold/20 p-5 rounded-[2px] flex flex-col md:flex-row items-center justify-between gap-5">
+            <div className="text-center md:text-left">
+              <p className="text-xs text-gold tracking-wide uppercase font-medium flex items-center justify-center md:justify-start gap-2">
+                <Sparkles className="w-4 h-4 animate-pulse" />
+                Modo de Customização Ativo
+              </p>
+              <p className="text-[11px] text-txt-muted mt-1 leading-relaxed">
+                Clique em <strong className="text-white-pure">"Editar Visão"</strong> ao lado do nome delas para mudar textos ou <strong className="text-white-pure">clique direto sobre qualquer imagem</strong> para substituí-la.
+              </p>
+            </div>
+            
+            <button
+              onClick={handlePersistToSourceCode}
+              disabled={isSavingSource}
+              className="cursor-pointer bg-gold hover:bg-gold-light disabled:opacity-40 text-black-pure font-sans text-[10px] md:text-xs font-bold tracking-[0.15em] uppercase px-6 py-3.5 rounded-[2px] transition-all duration-300 flex items-center justify-center gap-2 shrink-0 active:scale-95 shadow-lg shadow-gold/10"
+            >
               <Sparkles className="w-4 h-4" />
-              Modo de Customização Ativo
-            </p>
-            <p className="text-[11px] text-txt-muted mt-1 leading-relaxed">
-              Clique em <strong className="text-white-pure">"Editar Visão"</strong> ao lado do nome dos modelos para mudar textos ou <strong className="text-white-pure">clique direto sobre qualquer imagem</strong> para substituí-la.
-            </p>
+              <span>{isSavingSource ? 'Gravando Alterações...' : 'Salvar Alterações no Código-Fonte'}</span>
+            </button>
           </div>
         </div>
       )}
