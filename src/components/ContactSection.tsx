@@ -167,21 +167,21 @@ export default function ContactSection() {
                 {isSubmitting ? 'Processando...' : 'Solicitar Proposta'}
               </button>
               
-              <div className="flex flex-col sm:flex-row md:items-center gap-4 sm:gap-6">
+              <div className="flex items-center gap-4">
                 <a
-                  href="https://wa.me/5511994480618?text=Olá!%20Gostaria%20de%20solicitar%20uma%20proposta%20focada%20na%20criação%20de%20influenciadoras%20virtuais."
+                  href="https://wa.me/5511994480618?text=Olá!%20Gostaria%20de%20solicitar%20uma%20proposta%20focada%20na%20criação%20de%20influenciadoras%2520virtuais."
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-xs text-txt-muted hover:text-gold tracking-[0.1em] flex items-center gap-2 transition-colors duration-300"
+                  className="p-2.5 rounded-full border border-emerald-500/20 bg-emerald-500/5 hover:bg-emerald-500/15 hover:border-emerald-500/40 text-emerald-400 hover:text-emerald-300 scale-100 hover:scale-110 active:scale-95 transition-all duration-300 flex items-center justify-center shadow-lg shadow-emerald-950/20 cursor-pointer"
+                  title="Falar no WhatsApp"
                 >
-                  <MessageCircle className="w-4 h-4 text-emerald-500 fill-emerald-500/10" />
-                  <span>WhatsApp: (11) 99448-0618</span>
+                  <MessageCircle className="w-5 h-5 fill-emerald-500/10" />
                 </a>
 
-                <span className="hidden sm:inline text-gold-dim/40">•</span>
+                <span className="text-gold-dim/20">•</span>
 
                 <a
-                  href="mailto:klaurindomkt@gmail.com?subject=AI%20Faces%20Studio%20-%20Contato&body=Olá,%20gostaria%20de%20saber%20mais%20sobre%20a%20criação%20de%20influenciadoras%20virtuais."
+                  href="mailto:klaurindomkt@gmail.com?subject=AI%20Faces%20Studio%20-%20Contato&body=Olá,%20gostaria%20de%20saber%20mais%20sobre%20a%20criação%2520de%20influenciadoras%2520virtuais."
                   className="text-xs text-txt-muted hover:text-gold tracking-[0.1em] flex items-center gap-2 transition-colors duration-300"
                 >
                   <Mail className="w-4 h-4 text-gold-dim" />
